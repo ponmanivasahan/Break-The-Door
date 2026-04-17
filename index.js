@@ -6,13 +6,18 @@ canvas.height=576
 
 const parsedCollisions=collisionLevel1.parse2D()
 const CollisionBlocks=parsedCollisions.createObjectsFrom2D()
+console.log(collisionLevel1.length)
+console.log(collisionLevel1.length % 16)
 
 const backgroundLevel1=new Sprite({
     position:{x:0,y:0},
     imageSrc:'./sprites/bg.png',
 })
 
-const player=new Player({CollisionBlocks})
+const player=new Player({collisionBlocks:CollisionBlocks,
+    imageSrc:'./sprites/idle.png',
+    frameRate:11,
+})
 
 const keys={
     w:{

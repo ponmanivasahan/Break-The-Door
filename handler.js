@@ -5,7 +5,7 @@ window.addEventListener('keydown',(event)=>{
                 player.velocity.y= -25
             }
             break;
-        case 'd':
+        case 'a':
             keys.a.pressed=true
             break
         case 'd':
