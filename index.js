@@ -12,7 +12,7 @@ const backgroundLevel1=new Sprite({
     imageSrc:'./sprites/bg.png',
 })
 
-const player=new Player()
+const player=new Player({CollisionBlocks})
 
 const keys={
     w:{
