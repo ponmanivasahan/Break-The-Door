@@ -3,7 +3,49 @@ const c=canvas.getContext('2d')
 
 canvas.width=1024
 canvas.height=576
+width=1024
+height=576
+window.gameState={
+    won:false
+}
 
+function setupCanvasResolution(){
+    const dpr=window.devicePixelRatio || 1
+    canvas.width=Math.floor(width*dpr)
+    canvas.height=Math.floor(height*dpr)
+    c.setTransform(dpr, 0, 0, dpr, 0, 0)
+    c.imageSmoothingEnabled=false
+}
+
+function resizeCanvasDisplay(){
+    const rawScale=Math.min(
+        window.innerWidth/width,
+        window.innerHeight/height
+    )
+    const scale=rawScale>=1 ? Math.floor(rawScale):rawScale
+
+    canvas.style.width=`${Math.round(width*scale)}px`
+    canvas.style.height=`${Math.round(height*scale)}px`
+}
+window.addEventListener('resize',()=>{
+    setupCanvasResolution()
+    resizeCanvasDisplay()
+})
+setupCanvasResolution()
+resizeCanvasDisplay()
+
+const bodyBackgroundChannels=getComputedStyle(document.body).backgroundColor
+                              .match(/\d+(?:\.\d+)?/g)
+                              .slice(0, 3)
+                              .map(Number)
+
+function updateBodyFadeBackground(opacity){
+    const fadeMultiplier=1-opacity
+    const r=Math.round(bodyBackgroundChannels[0]*fadeMultiplier)
+    const g=Math.round(bodyBackgroundChannels[1]*fadeMultiplier)
+    const b=Math.round(bodyBackgroundChannels[2]*fadeMultiplier)
+    document.body.style.backgroundColor=`rgb(${r}, ${g}, ${b})`
+}
 let parsedCollisions
 let collisionBlocks=[]
 let background

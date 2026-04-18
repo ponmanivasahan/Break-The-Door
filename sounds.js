@@ -61,7 +61,12 @@ const gameSound=(()=>{
     }
     return{
          unlock,stopAll,setWalking:()=>{ },
-         playjump:()=>{ },playDoorOpen,
+         playjump:()=>{ 
+            ensureAudio() 
+            const jumpSound=new Audio('./music/jump.mp3')
+            jumpSound.volume=0.4
+            jumpSound.play()
+        },playDoorOpen,
          playDoorClose:()=>{ },
     }
 })()
