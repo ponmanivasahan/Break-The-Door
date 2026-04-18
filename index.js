@@ -182,10 +182,18 @@ const keys={
 const overlay={
     opacity:0,
 }
+
+let musicStarted=false
 function animate(){
     window.requestAnimationFrame(animate)
     if(!background){
         return
+    }
+    if(!musicStarted && (keys.a.pressed || keys.d.pressed || keys.w.pressed)){
+        if(window.gameSound){
+            window.gameSound.unlock()
+            musicStarted=true
+        }
     }
     // c.fillStyle='white'
     // c.fillRect(0,0,canvas.width,canvas.height);

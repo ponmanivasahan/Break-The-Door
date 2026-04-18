@@ -11,6 +11,9 @@ window.addEventListener('keydown',(event)=>{
                     player.hitbox.position.y+player.hitbox.height>=door.position.y &&
                     player.hitbox.position.y<=door.position.y+door.height
                  ){
+                   if(window.gameSound){
+                    gameSound.playDoorOpen()
+                   }
                    player.velocity.x=0
                    player.velocity.y=0
                    player.preventInput=true
@@ -21,6 +24,9 @@ window.addEventListener('keydown',(event)=>{
             }
             if(player.velocity.y===0){
                 player.velocity.y= -25
+                if(window.gameSound){
+                    gameSound.playjump()
+                }
             }
             break;
         case 'a':
