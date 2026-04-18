@@ -11,19 +11,14 @@ class Player extends Sprite{
             y:0,
          }
         
-        // this.width=25
-        // this.height=25
-        // this.sides={
-        //     bottom:this.position.y + this.height,
-        // }
+        this.sides={
+            bottom:this.position.y + this.height,
+        }
         this.gravity=1
         this.collisionBlocks=collisionBlocks
     }
 
-    // draw(){
-    //     c.fillStyle='green'
-    //     c.fillRect(this.position.x,this.position.y,this.width,this.height)
-    // }
+    
     update(){
         this.position.x+=this.velocity.x
         this.updateHitbox()
@@ -42,6 +37,7 @@ class Player extends Sprite{
         this.frameRate=this.animations[name].frameRate
         this.frameBuffer=this.animations[name].frameBuffer
         this.loop=this.animations[name].loop
+        this.currentAnimation=this.animations[name]
     }
     updateHitbox(){
         this.hitbox={
@@ -102,7 +98,6 @@ class Player extends Sprite{
                 break
             }
           }
-
         }
     }
 }
