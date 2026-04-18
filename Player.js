@@ -1,6 +1,6 @@
 class Player extends Sprite{
-    constructor({collisionBlocks=[],imageSrc,frameRate,animations}){
-        super({imageSrc,frameRate,animations})
+    constructor({collisionBlocks=[],imageSrc,frameRate,animations,loop}){
+        super({imageSrc,frameRate,animations,loop})
         this.position={
             x:200,
             y:200,
@@ -41,6 +41,7 @@ class Player extends Sprite{
         this.image=this.animations[name].image
         this.frameRate=this.animations[name].frameRate
         this.frameBuffer=this.animations[name].frameBuffer
+        this.loop=this.animations[name].loop
     }
     updateHitbox(){
         this.hitbox={

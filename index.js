@@ -42,9 +42,25 @@ const player=new Player({collisionBlocks:CollisionBlocks,
            loop:true,
            imageSrc:'./sprites/runLeft.png'
         },
+        enterDoor:{
+            frameRate:8,
+            frameBuffer:4,
+            loop:false,
+            imageSrc:'./sprites/enterDoor.png',
+        },
     }
 })
 
+const doors=[
+    new Sprite({
+       position:{x:767,y:270},
+       imageSrc:'./sprites/doorOpen.png',
+       frameRate:5,
+       frameBuffer:5,
+       loop:false,
+       autoplay:false,
+    }),
+]
 const keys={
     w:{
         pressed:false,
@@ -83,7 +99,9 @@ function animate(){
             player.switchSprite('idleRight')
         }
     }
-
+     doors.forEach((door)=>{
+        door.draw()
+     })
     player.draw()
     player.update()
 }
